@@ -26,5 +26,5 @@ Be nice!
  - Sequence
  
 ## Functional Test Analyst
- - Test Case
+ - Test Cases written in Gherkin (BDD)
 
