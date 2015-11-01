@@ -1,0 +1,68 @@
+@startuml
+set namespaceSeparator .
+
+class TaskJuggler.Project {
+ +ID id
+ +String name 
+ +String version
+ +Interval2 interval
+ +Currency currency
+ +CurrencyFormat currencyFormat
+ +Hours dailyWorkingHours
+ +Integer yearlyWorkingDays
+ +Date now
+ +NumberFormat numberFormat
+ +DateTimeFormat shortTimeFormat
+ +DateTimeFormat timeFormat
+ +Path outputDir
+ +Scenario scenario
+ +Timezone timezone
+ +TimeResolution timingResolution
+ +StartOfWeek weekStart
+}
+
+class TaskJuggler.Macro
+class TaskJuggler.Flag
+class TaskJuggler.Account
+class TaskJuggler.Shift
+class TaskJuggler.Vacation
+class TaskJuggler.Resource
+class TaskJuggler.Task
+class TaskJuggler.AccountReport
+class TaskJuggler.ResourceReport
+class TaskJuggler.Export
+
+TaskJuggler.Project o-- TaskJuggler.Macro
+TaskJuggler.Project o-- TaskJuggler.Flag
+TaskJuggler.Project o-- TaskJuggler.Account
+TaskJuggler.Project o-- TaskJuggler.Shift
+TaskJuggler.Project o-- TaskJuggler.Vacation
+TaskJuggler.Project o-- TaskJuggler.Resource
+TaskJuggler.Project *-- TaskJuggler.Task
+TaskJuggler.Project *-- TaskJuggler.AccountReport
+TaskJuggler.Project *-- TaskJuggler.ResourceReport
+TaskJuggler.Project *-- TaskJuggler.Export
+
+TaskJuggler.Project o-- TaskJuggler.Project
+TaskJuggler.Task *-- TaskJuggler.Task
+TaskJuggler.Resource *-- TaskJuggler.Resource
+TaskJuggler.Account *-- TaskJuggler.Account
+
+TaskJuggler.Project *-- TaskJuggler.Project.AlertLevels
+TaskJuggler.Project *-- TaskJuggler.Project.Extend
+TaskJuggler.Project.Extend <|-- TaskJuggler.Project.Extend.Task
+TaskJuggler.Project.Extend <|-- TaskJuggler.Project.Extend.Resource
+TaskJuggler.Project.Extend <|-- TaskJuggler.Project.Extend.Account
+TaskJuggler.Project.Extend *-- TaskJuggler.Project.Extend.Type
+abstract TaskJuggler.Project.Extend.Type {
+ +ID id
+ +String name
+ +Boolean inherits
+ +Boolean scenarioSpecific
+}
+
+TaskJuggler.Project.Extend.Type <|-- TaskJuggler.Project.Extend.Date
+TaskJuggler.Project.Extend.Type <|-- TaskJuggler.Project.Extend.Number
+TaskJuggler.Project.Extend.Type <|-- TaskJuggler.Project.Extend.Reference
+TaskJuggler.Project.Extend.Type <|-- TaskJuggler.Project.Extend.Text
+@enduml
