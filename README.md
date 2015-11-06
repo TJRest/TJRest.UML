@@ -2,6 +2,10 @@
 TaskJuggler Rest UML Specs
 
 # Technology Stack
+ - Install Emacs
+   - Gnu/Linux: Emacs is included in most (probably all) Linux Distributions
+   - OS X: Head to http://emacsformacosx.com/
+   - Windows: Head to http://www.gnu.org/software/emacs/manual/html_mono/efaq-w32.html
  - org.mode
  - plantUML
 
